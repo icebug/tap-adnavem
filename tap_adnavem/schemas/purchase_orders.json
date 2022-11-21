@@ -1,0 +1,20 @@
+{
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "integer"
+        },
+        "number": {
+            "type": "string"
+        },
+        "state": {
+            "type": "integer"
+        },
+        "date": {
+            "type": "string"
+        },
+        "extraction_date": {
+            "type": "string"
+        }
+    }
+}

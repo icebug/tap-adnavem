@@ -1,4 +1,5 @@
 """Stream type classes for tap-adnavem."""
+from datetime import date
 
 from pathlib import Path
 from typing import Any, Dict, Optional, Union, List, Iterable
@@ -7,56 +8,67 @@ from singer_sdk import typing as th  # JSON Schema typing helpers
 
 from tap_adnavem.client import AdnavemStream
 
-# TODO: Delete this is if not using json files for schema definition
 SCHEMAS_DIR = Path(__file__).parent / Path("./schemas")
-# TODO: - Override `UsersStream` and `GroupsStream` with your own stream definition.
-#       - Copy-paste as many times as needed to create multiple stream types.
 
+class PurchaseOrderMasterStream(AdnavemStream):
+    """Stream to get purchase order master models."""
+    name = "purchase_order"
+    path = "/purchasing/purchaseOrder/master"
+    primary_keys = ["id", "item", "state"]
+    replication_key = "date"
+    schema_filepath = SCHEMAS_DIR / "purchase_orders.json"
 
-class UsersStream(AdnavemStream):
-    """Define custom stream."""
-    name = "users"
-    path = "/users"
-    primary_keys = ["id"]
-    replication_key = None
-    # Optionally, you may also use `schema_filepath` in place of `schema`:
-    # schema_filepath = SCHEMAS_DIR / "users.json"
-    schema = th.PropertiesList(
-        th.Property("name", th.StringType),
-        th.Property(
-            "id",
-            th.StringType,
-            description="The user's system ID"
-        ),
-        th.Property(
-            "age",
-            th.IntegerType,
-            description="The user's age in years"
-        ),
-        th.Property(
-            "email",
-            th.StringType,
-            description="The user's email address"
-        ),
-        th.Property("street", th.StringType),
-        th.Property("city", th.StringType),
-        th.Property(
-            "state",
-            th.StringType,
-            description="State name in ISO 3166-2 format"
-        ),
-        th.Property("zip", th.StringType),
-    ).to_dict()
+    def get_url_params(
+        self, context: Optional[dict], next_page_token: Optional[Any]
+    ) -> Dict[str, Any]:
+        """Return a dictionary of values to be used in URL parameterization."""
+        params: dict = {}
+        if self.replication_key:
+            params["partyId"] = self.config.get("party_id")
+            params["role"] = self.config.get("role")
+        return params
 
+    def get_child_context(
+        self, record: dict, context: Optional[dict]
+    ) -> Dict[str, Any]:
+        """Return a context dictionary for child streams."""
+        return {
+            "number": record["number"]
+        }
 
-class GroupsStream(AdnavemStream):
-    """Define custom stream."""
-    name = "groups"
-    path = "/groups"
-    primary_keys = ["id"]
-    replication_key = "modified"
-    schema = th.PropertiesList(
-        th.Property("name", th.StringType),
-        th.Property("id", th.StringType),
-        th.Property("modified", th.DateTimeType),
-    ).to_dict()
+    def post_process(
+        self, row: dict, context: Optional[dict]
+    ) -> Dict[str, Any]:
+        """As needed, append or transform raw data to match expected structure."""
+        row["extraction_date"] = date.today().strftime("%Y-%m-%d")
+        return row
+
+class PurchaseOrderDocumentStream(AdnavemStream):
+    """Stream to get purchase order documents."""
+    name = "purchase_documents"
+    path = "/purchasing/purchaseOrderDocument"
+    schema_filepath = SCHEMAS_DIR / "purchase_order_documents.json"
+    primary_keys = ["id", "number", "state"]
+    replication_key = "date"
+
+    # Streams should be invoked once per parent:
+    parent_stream_type = PurchaseOrderMasterStream
+
+    # Assume epics don't have `updated_at` incremented when issues are changed:
+    ignore_parent_replication_keys = True
+
+    def get_url_params(
+        self, context: Optional[dict], next_page_token: Optional[Any]
+    ) -> Dict[str, Any]:
+        """Return a dictionary of values to be used in URL parameterization."""
+        params: dict = {}
+        params["partyId"] = self.config.get("party_id")
+        params["number"] = context["number"]
+        return params
+
+    def post_process(
+        self, row: dict, context: Optional[dict]
+    ) -> Dict[str, Any]:
+        """As needed, append or transform raw data to match expected structure."""
+        row["extraction_date"] = date.today().strftime("%Y-%m-%d")
+        return row

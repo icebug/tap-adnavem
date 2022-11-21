@@ -2,7 +2,7 @@
 name = "tap-adnavem"
 version = "0.0.1"
 description = "`tap-adnavem` is a Singer tap for Adnavem, built with the Meltano Singer SDK."
-authors = ["FirstName LastName"]
+authors = ["Eliza Nordén"]
 keywords = [
     "ELT",
     "Adnavem",

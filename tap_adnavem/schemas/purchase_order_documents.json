@@ -1,0 +1,45 @@
+{
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "integer"
+        },
+        "date": {
+            "type": "string"
+        },
+        "number": {
+            "type": "string"
+        },
+        "state": {
+            "type": "integer"
+        },
+        "extraction_date": {
+            "type": "string"
+        },
+        "items": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "state": {
+                        "type": "integer"
+                    },
+                    "shipmentCargoDetails": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "shipmentNumber": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
