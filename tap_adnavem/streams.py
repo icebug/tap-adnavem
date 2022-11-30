@@ -1,5 +1,5 @@
 """Stream type classes for tap-adnavem."""
-from datetime import date
+from datetime import datetime
 
 from pathlib import Path
 from typing import Any, Dict, Optional, Union, List, Iterable
@@ -14,7 +14,7 @@ class PurchaseOrderMasterStream(AdnavemStream):
     """Stream to get purchase order master models."""
     name = "purchase_order"
     path = "/purchasing/purchaseOrder/master"
-    primary_keys = ["id", "item", "state"]
+    primary_keys = ["id", "number", "state"]
 
     replication_method = "INCREMENTAL"
     replication_key = "date"
@@ -42,7 +42,7 @@ class PurchaseOrderMasterStream(AdnavemStream):
         self, row: dict, context: Optional[dict]
     ) -> Dict[str, Any]:
         """As needed, append or transform raw data to match expected structure."""
-        row["extraction_date"] = date.today().strftime("%Y-%m-%d")
+        row["extraction_date"] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         return row
 
 class PurchaseOrderDocumentStream(AdnavemStream):
@@ -75,5 +75,5 @@ class PurchaseOrderDocumentStream(AdnavemStream):
         self, row: dict, context: Optional[dict]
     ) -> Dict[str, Any]:
         """As needed, append or transform raw data to match expected structure."""
-        row["extraction_date"] = date.today().strftime("%Y-%m-%d")
+        row["extraction_date"] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         return row
