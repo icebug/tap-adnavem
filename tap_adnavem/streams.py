@@ -15,6 +15,8 @@ class PurchaseOrderMasterStream(AdnavemStream):
     name = "purchase_order"
     path = "/purchasing/purchaseOrder/master"
     primary_keys = ["id", "item", "state"]
+
+    replication_method = "INCREMENTAL"
     replication_key = "date"
     schema_filepath = SCHEMAS_DIR / "purchase_orders.json"
 
@@ -48,7 +50,9 @@ class PurchaseOrderDocumentStream(AdnavemStream):
     name = "purchase_documents"
     path = "/purchasing/purchaseOrderDocument"
     schema_filepath = SCHEMAS_DIR / "purchase_order_documents.json"
+
     primary_keys = ["id", "number", "state"]
+    replication_method = "INCREMENTAL"
     replication_key = "date"
 
     # Streams should be invoked once per parent:
