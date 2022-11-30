@@ -59,8 +59,6 @@ class PurchaseOrderDocumentStream(AdnavemStream):
     parent_stream_type = PurchaseOrderMasterStream
     # Assume epics don't have `updated_at` incremented when issues are changed:
     ignore_parent_replication_keys = True
-    # Don't store any state bookmarks
-    state_partitioning_keys = []
 
     def get_url_params(
         self, context: Optional[dict], next_page_token: Optional[Any]
