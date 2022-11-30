@@ -14,10 +14,10 @@ class PurchaseOrderMasterStream(AdnavemStream):
     """Stream to get purchase order master models."""
     name = "purchase_order"
     path = "/purchasing/purchaseOrder/master"
-    primary_keys = ["id", "number", "state"]
 
-    replication_method = "INCREMENTAL"
+    primary_keys = ["id"]
     replication_key = "date"
+
     schema_filepath = SCHEMAS_DIR / "purchase_orders.json"
 
     def get_url_params(
@@ -51,8 +51,8 @@ class PurchaseOrderDocumentStream(AdnavemStream):
     path = "/purchasing/purchaseOrderDocument"
     schema_filepath = SCHEMAS_DIR / "purchase_order_documents.json"
 
-    primary_keys = ["id", "number", "state"]
-    replication_method = "INCREMENTAL"
+    # TODO: only id
+    primary_keys = ["id"]
     replication_key = "date"
 
     # Streams should be invoked once per parent:
