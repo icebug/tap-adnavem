@@ -5,7 +5,8 @@
             "type": "integer"
         },
         "date": {
-            "type": "string"
+            "type": "string",
+            "format": "date-time"
         },
         "number": {
             "type": "string"
