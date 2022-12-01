@@ -42,7 +42,7 @@ class PurchaseOrderMasterStream(AdnavemStream):
         self, row: dict, context: Optional[dict]
     ) -> Dict[str, Any]:
         """As needed, append or transform raw data to match expected structure."""
-        row["extraction_date"] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        row["extraction_date"] = datetime.now()
         return row
 
 class PurchaseOrderDocumentStream(AdnavemStream):
@@ -51,7 +51,6 @@ class PurchaseOrderDocumentStream(AdnavemStream):
     path = "/purchasing/purchaseOrderDocument"
     schema_filepath = SCHEMAS_DIR / "purchase_order_documents.json"
 
-    # TODO: only id
     primary_keys = ["id"]
     replication_key = "date"
 
@@ -59,7 +58,9 @@ class PurchaseOrderDocumentStream(AdnavemStream):
     parent_stream_type = PurchaseOrderMasterStream
     # Assume epics don't have `updated_at` incremented when issues are changed:
     ignore_parent_replication_keys = True
-    state_partitioning_keys = ["number"]
+
+    # Don't use state partitioning
+    state_partitioning_keys = []
 
     def get_url_params(
         self, context: Optional[dict], next_page_token: Optional[Any]
@@ -74,5 +75,5 @@ class PurchaseOrderDocumentStream(AdnavemStream):
         self, row: dict, context: Optional[dict]
     ) -> Dict[str, Any]:
         """As needed, append or transform raw data to match expected structure."""
-        row["extraction_date"] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        row["extraction_date"] = datetime.now()
         return row
