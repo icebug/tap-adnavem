@@ -14,8 +14,9 @@
             "type": "integer"
         },
         "extraction_date": {
-            "type": "string"
-        },
+            "type": "string",
+            "format": "date-time"
+                },
         "items": {
             "type": "array",
             "items": {

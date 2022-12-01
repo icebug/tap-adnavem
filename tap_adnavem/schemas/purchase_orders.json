@@ -14,7 +14,8 @@
             "type": "string"
         },
         "extraction_date": {
-            "type": "string"
+            "type": "string",
+            "format": "date-time"
         }
     }
 }
