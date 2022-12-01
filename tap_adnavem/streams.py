@@ -77,3 +77,29 @@ class PurchaseOrderDocumentStream(AdnavemStream):
         """As needed, append or transform raw data to match expected structure."""
         row["extraction_date"] = datetime.now()
         return row
+
+class ShipmentActiveContainerStream(AdnavemStream):
+    """Stream to track currently active containers."""
+    name = "shipment_active_containers"
+    path = "/shipment/activeContainers/tracking"
+
+    primary_keys = ["id"]
+    replication_key = "extraction_date"
+
+    schema_filepath = SCHEMAS_DIR / "shipment_active_containers.json"
+
+    def get_url_params(
+        self, context: Optional[dict], next_page_token: Optional[Any]
+    ) -> Dict[str, Any]:
+        """Return a dictionary of values to be used in URL parameterization."""
+        params: dict = {}
+        if self.replication_key:
+            params["partyId"] = self.config.get("party_id")
+        return params
+
+    def post_process(
+        self, row: dict, context: Optional[dict]
+    ) -> Dict[str, Any]:
+        """As needed, append or transform raw data to match expected structure."""
+        row["extraction_date"] = datetime.now()
+        return row

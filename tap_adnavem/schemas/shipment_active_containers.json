@@ -1,0 +1,116 @@
+{
+    "type": "object",
+    "properties": {
+        "containers": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "shipmentId": {
+                        "type": "integer"
+                    },
+                    "shipmentNumber": {
+                        "type": "string"
+                    },
+                    "shipmentReference": {
+                        "type": "string"
+                    },
+                    "reference": {
+                        "type": "string"
+                    },
+                    "number": {
+                        "type": "string"
+                    },
+                    "seal": {
+                        "type": "string"
+                    },
+                    "containerSize": {
+                        "type": "integer"
+                    },
+                    "status": {
+                        "type": "integer"
+                    },
+                    "trackLocationId": {
+                        "type": "integer"
+                    },
+                    "trackVesselId": {
+                        "type": "integer"
+                    },
+                    "estimatedArrivalChangedAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "arrivalScheduleDeviationDays": {
+                        "type": "number"
+                    },
+                    "arrivalBookingDeviationDays": {
+                        "type": "number"
+                    },
+                    "estimatedArrivalAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "estimatedArrivalSource": {
+                        "type": "integer"
+                    },
+                    "estimatedArrivalLocationId": {
+                        "type": "integer"
+                    },
+                    "expectedArrivalLocationId": {
+                        "type": "integer"
+                    }
+                }
+            }
+        },
+        "locations": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "code": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "latitude": {
+                        "type": "number"
+                    },
+                    "longitude": {
+                        "type": "number"
+                    }
+                }
+            }
+        },
+        "vessels": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "latitude": {
+                        "type": "number"
+                    },
+                    "longitude": {
+                        "type": "number"
+                    }
+                }
+            }
+        },
+        "extraction_date": {
+            "type": "string",
+            "format": "date-time"
+        }
+    }
+}
