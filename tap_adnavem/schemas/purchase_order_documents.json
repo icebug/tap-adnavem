@@ -16,7 +16,10 @@
         "extraction_date": {
             "type": "string",
             "format": "date-time"
-                },
+        },
+        "requestedDeliveryAt": {
+            "type": "string"
+        },
         "items": {
             "type": "array",
             "items": {
@@ -28,12 +31,33 @@
                     "state": {
                         "type": "integer"
                     },
+                    "number": {
+                        "type": "integer"
+                    },
+                    "quantity": {
+                        "type": "integer"
+                    },
+                    "salesQuantity": {
+                        "type": "integer"
+                    },
+                    "shippedQuantity": {
+                        "type": "integer"
+                    },
+                    "selectedQuantity": {
+                        "type": "integer"
+                    },
                     "shipmentCargoDetails": {
                         "type": "array",
                         "items": {
                             "type": "object",
                             "properties": {
                                 "shipmentNumber": {
+                                    "type": "string"
+                                },
+                                "id": {
+                                    "type": "integer"
+                                },
+                                "number": {
                                     "type": "string"
                                 }
                             }
