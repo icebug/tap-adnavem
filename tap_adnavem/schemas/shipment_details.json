@@ -1,0 +1,910 @@
+{
+    "type": "object",
+    "properties": {
+        "shipment_id": {
+            "type": "integer"
+        },
+        "shipment": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "updatedUserId": {
+                    "type": "integer"
+                },
+                "version": {
+                    "type": "integer"
+                },
+                "updatedAt": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "createdAt": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "firstSubmittedAt": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "firstSubmittedUserId": {
+                    "type": "integer"
+                },
+                "submittedAt": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "submittedUserId": {
+                    "type": "integer"
+                },
+                "bookerPartyId": {
+                    "type": "integer"
+                },
+                "bookerReference": {
+                    "type": "string"
+                },
+                "buyerPartyId": {
+                    "type": "integer"
+                },
+                "buyerReference": {
+                    "type": "string"
+                },
+                "sellerPartyId": {
+                    "type": "integer"
+                },
+                "sellerReference": {
+                    "type": "string"
+                },
+                "senderPartyId": {
+                    "type": "integer"
+                },
+                "senderReference": {
+                    "type": "string"
+                },
+                "receiverPartyId": {
+                    "type": "integer"
+                },
+                "receiverReference": {
+                    "type": "string"
+                },
+                "carriagePartyId": {
+                    "type": "integer"
+                },
+                "carrierPartyId": {
+                    "type": "integer"
+                },
+                "pickupFrom": {
+                    "type": "string"
+                },
+                "pickupBefore": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "estimatedDepartureAt": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "estimatedArrivalAt": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "actualDepartureAt": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "actualArrivalAt": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "actualDepartureAtReportedBy": {
+                    "type": "integer"
+                },
+                "partiesSubmittedAt": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "partiesSubmittedUserId": {
+                    "type": "integer"
+                },
+                "cargoDetailsSubmittedAt": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "cargoDetailsSubmittedUserId": {
+                    "type": "integer"
+                },
+                "containersSubmittedAt": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "containersSubmittedUserId": {
+                    "type": "integer"
+                },
+                "number": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "integer"
+                },
+                "type": {
+                    "type": "integer"
+                },
+                "mode": {
+                    "type": "integer"
+                },
+                "process": {
+                    "type": "integer"
+                },
+                "incotermsId": {
+                    "type": "integer"
+                },
+                "hasNamedOrigin": {
+                    "type": "boolean"
+                },
+                "hasNamedDestination": {
+                    "type": "boolean"
+                },
+                "namedOriginLocalityCategory": {
+                    "type": "integer"
+                },
+                "namedDestinationLocalityCategory": {
+                    "type": "integer"
+                },
+                "departureLocationId": {
+                    "type": "integer"
+                },
+                "arrivalLocationId": {
+                    "type": "integer"
+                },
+                "teu": {
+                    "type": "integer"
+                },
+                "cube": {
+                    "type": "integer"
+                },
+                "coEmission": {
+                    "type": "number"
+                },
+                "weight": {
+                    "type": "integer"
+                },
+                "distance": {
+                    "type": "number"
+                },
+                "scheduleDurationDays": {
+                    "type": "number"
+                },
+                "actualDurationDays": {
+                    "type": "number"
+                },
+                "services": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "id": {
+                                "type": "integer"
+                            },
+                            "updatedUserId": {
+                                "type": "integer"
+                            },
+                            "updatedAt": {
+                                "type": "string",
+                                "format": "date-time"
+                            },
+                            "createdAt": {
+                                "type": "string",
+                                "format": "date-time"
+                            },
+                            "estimatedDepartureAt": {
+                                "type": "string",
+                                "format": "date-time"
+                            },
+                            "estimatedArrivalAt": {
+                                "type": "string",
+                                "format": "date-time"
+                            },
+                            "number": {
+                                "type": "string"
+                            },
+                            "status": {
+                                "type": "integer"
+                            },
+                            "shipmentId": {
+                                "type": "integer"
+                            },
+                            "customerPartyId": {
+                                "type": "integer"
+                            },
+                            "serviceCode": {
+                                "type": "integer"
+                            },
+                            "mode": {
+                                "type": "integer"
+                            },
+                            "serviceClass": {
+                                "type": "integer"
+                            },
+                            "rateTerm": {
+                                "type": "integer"
+                            },
+                            "containerEquipment": {
+                                "type": "integer"
+                            },
+                            "coEmission": {
+                                "type": "number"
+                            },
+                            "distance": {
+                                "type": "number"
+                            },
+                            "voyages": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer"
+                                        },
+                                        "createdAt": {
+                                            "type": "string",
+                                            "format": "date-time"
+                                        },
+                                        "updatedUserId": {
+                                            "type": "integer"
+                                        },
+                                        "updatedAt": {
+                                            "type": "string",
+                                            "format": "date-time"
+                                        },
+                                        "shipmentId": {
+                                            "type": "integer"
+                                        },
+                                        "shipmentServiceId": {
+                                            "type": "integer"
+                                        },
+                                        "ordinal": {
+                                            "type": "integer"
+                                        },
+                                        "departureLocalityId": {
+                                            "type": "integer"
+                                        },
+                                        "departureLocalityCategory": {
+                                            "type": "integer"
+                                        },
+                                        "arrivalLocalityId": {
+                                            "type": "integer"
+                                        },
+                                        "arrivalLocalityCategory": {
+                                            "type": "integer"
+                                        },
+                                        "estimatedDepartureAt": {
+                                            "type": "string",
+                                            "format": "date-time"
+                                        },
+                                        "estimatedArrivalAt": {
+                                            "type": "string",
+                                            "format": "date-time"
+                                        },
+                                        "mode": {
+                                            "type": "integer"
+                                        },
+                                        "departureReliability": {
+                                            "type": "integer"
+                                        },
+                                        "distanceMethod": {
+                                            "type": "integer"
+                                        },
+                                        "distance": {
+                                            "type": "number"
+                                        },
+                                        "duration": {
+                                            "type": "integer"
+                                        },
+                                        "coEmission": {
+                                            "type": "number"
+                                        },
+                                        "emissionMethod": {
+                                            "type": "integer"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "deliveryLocation": {
+                    "type": "object",
+                    "properties": {
+                        "id": {
+                            "type": "integer"
+                        },
+                        "updatedUserId": {
+                            "type": "integer"
+                        },
+                        "createdAt": {
+                            "type": "string",
+                            "format": "date-time"
+                        },
+                        "updatedAt": {
+                            "type": "string",
+                            "format": "date-time"
+                        },
+                        "shipmentId": {
+                            "type": "integer"
+                        },
+                        "partyPlaceId": {
+                            "type": "integer"
+                        },
+                        "type": {
+                            "type": "integer"
+                        },
+                        "latitude": {
+                            "type": "number"
+                        },
+                        "longitude": {
+                            "type": "number"
+                        },
+                        "containerEquipment": {
+                            "type": "integer"
+                        },
+                        "address": {
+                            "type": "string"
+                        },
+                        "countryId": {
+                            "type": "integer"
+                        },
+                        "postalCode": {
+                            "type": "string"
+                        },
+                        "selectLocationUserId": {
+                            "type": "integer"
+                        },
+                        "selectLocationAt": {
+                            "type": "string"
+                        },
+                        "nearestLocality": {
+                            "type": "object",
+                            "properties": {
+                                "id": {
+                                    "type": "integer"
+                                },
+                                "category": {
+                                    "type": "integer"
+                                },
+                                "function": {
+                                    "type": "integer"
+                                },
+                                "size": {
+                                    "type": "integer"
+                                },
+                                "code": {
+                                    "type": "string"
+                                },
+                                "name": {
+                                    "type": "string"
+                                },
+                                "path": {
+                                    "type": "string"
+                                },
+                                "latitude": {
+                                    "type": "number"
+                                },
+                                "longitude": {
+                                    "type": "number"
+                                }
+                            }
+                        }
+                    }
+                },
+                "pickupLocation": {
+                    "type": "object",
+                    "properties": {
+                        "id": {
+                            "type": "integer"
+                        },
+                        "updatedUserId": {
+                            "type": "integer"
+                        },
+                        "createdAt": {
+                            "type": "string",
+                            "format": "date-time"
+                        },
+                        "updatedAt": {
+                            "type": "string",
+                            "format": "date-time"
+                        },
+                        "shipmentId": {
+                            "type": "integer"
+                        },
+                        "partyPlaceId": {
+                            "type": "integer"
+                        },
+                        "type": {
+                            "type": "integer"
+                        },
+                        "latitude": {
+                            "type": "number"
+                        },
+                        "longitude": {
+                            "type": "number"
+                        },
+                        "containerEquipment": {
+                            "type": "integer"
+                        },
+                        "address": {
+                            "type": "string"
+                        },
+                        "selectLocationUserId": {
+                            "type": "integer"
+                        },
+                        "selectLocationAt": {
+                            "type": "string",
+                            "format": "date-time"
+                        },
+                        "nearestLocality": {
+                            "type": "object",
+                            "properties": {
+                                "id": {
+                                    "type": "integer"
+                                },
+                                "category": {
+                                    "type": "integer"
+                                },
+                                "function": {
+                                    "type": "integer"
+                                },
+                                "size": {
+                                    "type": "integer"
+                                },
+                                "code": {
+                                    "type": "string"
+                                },
+                                "name": {
+                                    "type": "string"
+                                },
+                                "path": {
+                                    "type": "string"
+                                },
+                                "latitude": {
+                                    "type": "number"
+                                },
+                                "longitude": {
+                                    "type": "number"
+                                }
+                            }
+                        }
+                    }
+                },
+                "containers": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "id": {
+                                "type": "integer"
+                            },
+                            "updatedUserId": {
+                                "type": "integer"
+                            },
+                            "updatedAt": {
+                                "type": "string",
+                                "format": "date-time"
+                            },
+                            "createdAt": {
+                                "type": "string",
+                                "format": "date-time"
+                            },
+                            "shipmentId": {
+                                "type": "integer"
+                            },
+                            "shipmentCargoGroupId": {
+                                "type": "integer"
+                            },
+                            "pickupState": {
+                                "type": "integer"
+                            },
+                            "deliveryState": {
+                                "type": "integer"
+                            },
+                            "containerOperationType": {
+                                "type": "integer"
+                            },
+                            "weight": {
+                                "type": "integer"
+                            },
+                            "maxWeight": {
+                                "type": "integer"
+                            },
+                            "warningWeight": {
+                                "type": "integer"
+                            },
+                            "maxCube": {
+                                "type": "number"
+                            },
+                            "warningCube": {
+                                "type": "number"
+                            },
+                            "containerSize": {
+                                "type": "integer"
+                            },
+                            "containerType": {
+                                "type": "integer"
+                            },
+                            "cargoType": {
+                                "type": "integer"
+                            },
+                            "reference": {
+                                "type": "string"
+                            },
+                            "number": {
+                                "type": "string"
+                            },
+                            "seal": {
+                                "type": "string"
+                            },
+                            "shipmentBookingId": {
+                                "type": "integer"
+                            },
+                            "shipmentReleaseId": {
+                                "type": "integer"
+                            },
+                            "status": {
+                                "type": "integer"
+                            },
+                            "trackLocationId": {
+                                "type": "integer"
+                            },
+                            "estimatedArrivalSource": {
+                                "type": "integer"
+                            },
+                            "estimatedArrivalAt": {
+                                "type": "string",
+                                "format": "date-time"
+                            },
+                            "expectedScheduleArrivalAt": {
+                                "type": "string",
+                                "format": "date-time"
+                            },
+                            "expectedBookingArrivalAt": {
+                                "type": "string",
+                                "format": "date-time"
+                            },
+                            "estimatedArrivalLocationId": {
+                                "type": "integer"
+                            },
+                            "arrivalBookingDeviationDays": {
+                                "type": "number"
+                            },
+                            "arrivalScheduleDeviationDays": {
+                                "type": "number"
+                            },
+                            "lastEstimatedArrivalAt": {
+                                "type": "string",
+                                "format": "date-time"
+                            },
+                            "lastEstimatedArrivalLocationId": {
+                                "type": "integer"
+                            },
+                            "estimatedArrivalChangedAt": {
+                                "type": "string",
+                                "format": "date-time"
+                            },
+                            "buyerAmountUsd": {
+                                "type": "number"
+                            },
+                            "sellerAmountUsd": {
+                                "type": "number"
+                            },
+                            "events": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer"
+                                        },
+                                        "updatedUserId": {
+                                            "type": "integer"
+                                        },
+                                        "updatedAt": {
+                                            "type": "string",
+                                            "format": "date-time"
+                                        },
+                                        "shipmentId": {
+                                            "type": "integer"
+                                        },
+                                        "shipmentBookingId": {
+                                            "type": "integer"
+                                        },
+                                        "shipmentContainerId": {
+                                            "type": "integer"
+                                        },
+                                        "eventAt": {
+                                            "type": "string",
+                                            "format": "date-time"
+                                        },
+                                        "firstActualAt": {
+                                            "type": "string",
+                                            "format": "date-time"
+                                        },
+                                        "lastActualAt": {
+                                            "type": "string",
+                                            "format": "date-time"
+                                        },
+                                        "status": {
+                                            "type": "integer"
+                                        },
+                                        "locationId": {
+                                            "type": "integer"
+                                        }
+                                    }
+                                }
+                            },
+                            "containerClosedAt": {
+                                "type": "string",
+                                "format": "date-time"
+                            },
+                            "containerClosedUserId": {
+                                "type": "integer"
+                            },
+                            "canModifyContainer": {
+                                "type": "boolean"
+                            },
+                            "canModifyContainerReference": {
+                                "type": "boolean"
+                            }
+                        }
+                    }
+                },
+                "cargoGroups": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "id": {
+                                "type": "integer"
+                            },
+                            "createdAt": {
+                                "type": "string",
+                                "format": "date-time"
+                            },
+                            "updatedUserId": {
+                                "type": "integer"
+                            },
+                            "updatedAt": {
+                                "type": "string",
+                                "format": "date-time"
+                            },
+                            "shipmentId": {
+                                "type": "integer"
+                            },
+                            "weight": {
+                                "type": "integer"
+                            },
+                            "cargoGroupProperties": {
+                                "type": "integer"
+                            },
+                            "containerSize": {
+                                "type": "integer"
+                            },
+                            "containerType": {
+                                "type": "integer"
+                            },
+                            "cargoType": {
+                                "type": "integer"
+                            },
+                            "quantity": {
+                                "type": "integer"
+                            },
+                            "exceededMaxWeight": {
+                                "type": "boolean"
+                            },
+                            "greaterThanMaxTemperature": {
+                                "type": "boolean"
+                            },
+                            "lessThanMinTemperature": {
+                                "type": "boolean"
+                            }
+                        }
+                    }
+                },
+                "cargoDetails": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "id": {
+                                "type": "integer"
+                            },
+                            "updatedUserId": {
+                                "type": "integer"
+                            },
+                            "updatedAt": {
+                                "type": "string",
+                                "format": "date-time"
+                            },
+                            "shipmentId": {
+                                "type": "integer"
+                            },
+                            "shipmentContainerId": {
+                                "type": "integer"
+                            },
+                            "number": {
+                                "type": "integer"
+                            },
+                            "salesOrderItemId": {
+                                "type": "integer"
+                            },
+                            "description": {
+                                "type": "string"
+                            },
+                            "harmonizedCommodity": {
+                                "type": "string"
+                            },
+                            "stockKeepingUnitNumber": {
+                                "type": "string"
+                            },
+                            "purchaseOrderNumber": {
+                                "type": "string"
+                            },
+                            "purchaseOrderItemNumber": {
+                                "type": "integer"
+                            },
+                            "salesOrderNumber": {
+                                "type": "string"
+                            },
+                            "salesOrderItemNumber": {
+                                "type": "integer"
+                            },
+                            "unitPriceCurrencyId": {
+                                "type": "integer"
+                            },
+                            "unitPrice": {
+                                "type": "number"
+                            },
+                            "totalPrice": {
+                                "type": "number"
+                            },
+                            "quantity": {
+                                "type": "integer"
+                            },
+                            "selectedQuantity": {
+                                "type": "integer"
+                            },
+                            "cargoType": {
+                                "type": "integer"
+                            },
+                            "selected": {
+                                "type": "boolean"
+                            },
+                            "canReadCargoValue": {
+                                "type": "boolean"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "tasks": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "shipmentId": {
+                        "type": "integer"
+                    },
+                    "shipmentNumber": {
+                        "type": "string"
+                    },
+                    "shipmentServiceCode": {
+                        "type": "integer"
+                    },
+                    "updatedAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "type": {
+                        "type": "integer"
+                    },
+                    "state": {
+                        "type": "integer"
+                    },
+                    "blockReason": {
+                        "type": "integer"
+                    },
+                    "partyId": {
+                        "type": "integer"
+                    },
+                    "partyName": {
+                        "type": "string"
+                    },
+                    "shipmentPartyId": {
+                        "type": "integer"
+                    },
+                    "resolveBefore": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "resolvedAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "canResolve": {
+                        "type": "boolean"
+                    },
+                    "resolvedUserId": {
+                        "type": "integer"
+                    },
+                    "isOverdue": {
+                        "type": "boolean"
+                    }
+                }
+            }
+        },
+        "localities": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "category": {
+                        "type": "integer"
+                    },
+                    "function": {
+                        "type": "integer"
+                    },
+                    "size": {
+                        "type": "integer"
+                    },
+                    "code": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "path": {
+                        "type": "string"
+                    },
+                    "latitude": {
+                        "type": "number"
+                    },
+                    "longitude": {
+                        "type": "number"
+                    }
+                }
+            }
+        },
+        "parties": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "name": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "shipment_updatedAt": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "extraction_date": {
+            "type": "string",
+            "format": "date-time"
+        }
+    }
+}

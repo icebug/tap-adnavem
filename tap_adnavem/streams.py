@@ -97,9 +97,60 @@ class ShipmentActiveContainerStream(AdnavemStream):
             params["partyId"] = self.config.get("party_id")
         return params
 
+    def get_child_context(
+        self, record: dict, context: Optional[dict]
+    ) -> Dict[str, Any]:
+
+        """Return a context dictionary for child streams."""
+        return {
+            "shipmentNumbers": [
+                container["shipmentNumber"]
+                    for container in record["containers"]
+            ]
+        }
+
     def post_process(
         self, row: dict, context: Optional[dict]
     ) -> Dict[str, Any]:
-        """As needed, append or transform raw data to match expected structure."""
         row["extraction_date"] = datetime.now()
+        return row
+
+class ShipmentDetailStream(AdnavemStream):
+    """Stream to get shipment details."""
+    name = "shipment_details"
+    path = "/shipment/shipments/detail/{shipmentNumber}"
+
+    primary_keys = ["shipment_id"]
+    replication_key = "shipment_updatedAt"
+
+    schema_filepath = SCHEMAS_DIR / "shipment_details.json"
+
+    # Streams should be invoked once per parent:
+    parent_stream_type = ShipmentActiveContainerStream
+    # Assume epics don't have `updated_at` incremented when issues are changed:
+    ignore_parent_replication_keys = True
+
+    # Don't use state partitioning
+    state_partitioning_keys = []
+
+    def get_records(self, context: Optional[dict]) -> Iterable[Dict[str, Any]]:
+
+        # Get shipmentNumber from parent stream
+        parent_data = context["shipmentNumbers"] if context and "shipmentNumbers" in context else []
+        for parent_record in parent_data:
+
+            shipment_context = {"shipmentNumber": parent_record}
+
+            for record in self.request_records(shipment_context):
+                transformed_record = self.post_process(record, None)
+                if transformed_record is None:
+                    continue
+                yield transformed_record
+
+    def post_process(
+        self, row: dict, context: Optional[dict]
+    ) -> Dict[str, Any]:
+        row["extraction_date"] = datetime.now()
+        row["shipment_updatedAt"] = row["shipment"]["updatedAt"]
+        row["shipment_id"] = row["shipment"]["id"]
         return row

@@ -8,15 +8,16 @@ from singer_sdk import typing as th  # JSON schema typing helpers
 from tap_adnavem.streams import (
     PurchaseOrderMasterStream,
     PurchaseOrderDocumentStream,
-    ShipmentActiveContainerStream
+    ShipmentActiveContainerStream,
+    ShipmentDetailStream
 )
 
 STREAM_TYPES = [
     PurchaseOrderMasterStream,
     PurchaseOrderDocumentStream,
-    ShipmentActiveContainerStream
+    ShipmentActiveContainerStream,
+    ShipmentDetailStream
 ]
-
 
 class TapAdnavem(Tap):
     """Adnavem tap class."""
