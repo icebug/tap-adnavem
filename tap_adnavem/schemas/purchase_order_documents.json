@@ -13,9 +13,30 @@
         "state": {
             "type": "integer"
         },
-        "extraction_date": {
-            "type": "string",
-            "format": "date-time"
+        "seller": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "code": {
+                    "type": "string"
+                }
+            }
+        },
+        "receiver": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "code": {
+                    "type": "string"
+                }
+            }
+        },
+        "incotermsCode": {
+            "type": "string"
         },
         "requestedDeliveryAt": {
             "type": "string"
@@ -28,11 +49,17 @@
                     "id": {
                         "type": "integer"
                     },
+                    "purchaseOrderId": {
+                        "type": "integer"
+                    },
                     "state": {
                         "type": "integer"
                     },
                     "number": {
                         "type": "integer"
+                    },
+                    "description": {
+                        "type": "string"
                     },
                     "quantity": {
                         "type": "integer"
@@ -46,25 +73,217 @@
                     "selectedQuantity": {
                         "type": "integer"
                     },
+                    "harmonizedCommodity": {
+                        "type": "string"
+                    },
+                    "stockKeepingUnitNumber": {
+                        "type": "string"
+                    },
+                    "unitPrice": {
+                        "type": "number"
+                    },
+                    "unitPriceCurrencyCode": {
+                        "type": "string"
+                    },
+                    "totalPrice": {
+                        "type": "number"
+                    },
+                    "receiver": {
+                        "type": "object",
+                        "properties": {
+                            "name": {
+                                "type": "string"
+                            },
+                            "code": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "requestedDeliveryAt": {
+                        "type": "string"
+                    },
+                    "plannedArrivalWarehouseAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "minEstimatedArrivalAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "maxEstimatedArrivalAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "minEstimatedArrivalWarehouseAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "maxEstimatedArrivalWarehouseAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "salesOrderItems": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "id": {
+                                    "type": "integer"
+                                },
+                                "isSelected": {
+                                    "type": "boolean"
+                                },
+                                "remainingQty": {
+                                    "type": "integer"
+                                },
+                                "salesOrderId": {
+                                    "type": "integer"
+                                },
+                                "number": {
+                                    "type": "string"
+                                },
+                                "purchaseOrderNumber": {
+                                    "type": "string"
+                                },
+                                "purchaseOrderItemNumber": {
+                                    "type": "string"
+                                },
+                                "purchaseOrderItemId": {
+                                    "type": "integer"
+                                },
+                                "description": {
+                                    "type": "string"
+                                },
+                                "quantity": {
+                                    "type": "integer"
+                                },
+                                "stockKeepingUnitNumber": {
+                                    "type": "string"
+                                },
+                                "salesUnitPrice": {
+                                    "type": "number"
+                                },
+                                "sellerPartyId": {
+                                    "type": "integer"
+                                },
+                                "buyerPartyId": {
+                                    "type": "integer"
+                                },
+                                "salesOrderNumber": {
+                                    "type": "string"
+                                },
+                                "salesOrderDate": {
+                                    "type": "string"
+                                },
+                                "confirmedDeliveryAt": {
+                                    "type": "string"
+                                },
+                                "salesQuantity": {
+                                    "type": "integer"
+                                },
+                                "shippedQuantity": {
+                                    "type": "integer"
+                                },
+                                "state": {
+                                    "type": "integer"
+                                }
+                            }
+                        }
+                    },
                     "shipmentCargoDetails": {
                         "type": "array",
                         "items": {
                             "type": "object",
                             "properties": {
-                                "shipmentNumber": {
-                                    "type": "string"
-                                },
                                 "id": {
                                     "type": "integer"
                                 },
                                 "number": {
                                     "type": "string"
+                                },
+                                "salesOrderNumber": {
+                                    "type": "string"
+                                },
+                                "salesOrderItemNumber": {
+                                    "type": "string"
+                                },
+                                "salesOrderItemId": {
+                                    "type": "integer"
+                                },
+                                "salesOrderDate": {
+                                    "type": "string"
+                                },
+                                "shipmentNumber": {
+                                    "type": "string"
+                                },
+                                "shipmentType": {
+                                    "type": "integer"
+                                },
+                                "containerNumber": {
+                                    "type": "string"
+                                },
+                                "containerReference": {
+                                    "type": "string"
+                                },
+                                "containerCount": {
+                                    "type": "integer"
+                                },
+                                "containerId": {
+                                    "type": "integer"
+                                },
+                                "containerSize": {
+                                    "type": "integer"
+                                },
+                                "estimatedArrivalAt": {
+                                    "type": "string",
+                                    "format": "date-time"
+                                },
+                                "teu": {
+                                    "type": "integer"
+                                },
+                                "departureLocationName": {
+                                    "type": "string"
+                                },
+                                "arrivalLocationName": {
+                                    "type": "string"
+                                },
+                                "shipmentStatus": {
+                                    "type": "integer"
+                                },
+                                "description": {
+                                    "type": "string"
+                                },
+                                "harmonizedCommodity": {
+                                    "type": "string"
+                                },
+                                "stockKeepingUnitNumber": {
+                                    "type": "string"
+                                },
+                                "quantity": {
+                                    "type": "integer"
+                                },
+                                "packageNumber": {
+                                    "type": "string"
+                                },
+                                "pickupFrom": {
+                                    "type": "string",
+                                    "format": "date-time"
                                 }
                             }
                         }
+                    },
+                    "requestedAction": {
+                        "type": "integer"
                     }
                 }
             }
+        },
+        "requestedAction": {
+            "type": "integer"
+        },
+        "extraction_date": {
+            "type": "string",
+            "format": "date-time"
         }
     }
 }

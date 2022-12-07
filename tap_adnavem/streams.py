@@ -47,7 +47,7 @@ class PurchaseOrderMasterStream(AdnavemStream):
 
 class PurchaseOrderDocumentStream(AdnavemStream):
     """Stream to get purchase order documents."""
-    name = "purchase_documents"
+    name = "purchase_order_documents"
     path = "/purchasing/purchaseOrderDocument"
     schema_filepath = SCHEMAS_DIR / "purchase_order_documents.json"
 
