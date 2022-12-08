@@ -12,7 +12,7 @@ SCHEMAS_DIR = Path(__file__).parent / Path("./schemas")
 
 class PurchaseOrderMasterStream(AdnavemStream):
     """Stream to get purchase order master models."""
-    name = "purchase_order"
+    name = "purchase_orders"
     path = "/purchasing/purchaseOrder/master"
 
     primary_keys = ["id"]
