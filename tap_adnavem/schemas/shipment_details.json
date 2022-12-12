@@ -93,6 +93,14 @@
                     "type": "string",
                     "format": "date-time"
                 },
+                "departureGateInAt": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "departureLoadedAt": {
+                    "type": "string",
+                    "format": "date-time"
+                },
                 "actualArrivalAt": {
                     "type": "string",
                     "format": "date-time"
@@ -632,8 +640,34 @@
                                             "type": "string",
                                             "format": "date-time"
                                         },
+                                        "firstPredictedAt": {
+                                            "type": "string",
+                                            "format": "date-time"
+                                        },
+                                        "lastPredictedAt": {
+                                            "type": "string",
+                                            "format": "date-time"
+                                        },
+                                        "firstEstimatedAt": {
+                                            "type": "string",
+                                            "format": "date-time"
+                                        },
+                                        "lastEstimatedAt": {
+                                            "type": "string",
+                                            "format": "date-time"
+                                        },
+                                        "deletedAt": {
+                                            "type": "string",
+                                            "format": "date-time"
+                                        },
                                         "status": {
                                             "type": "integer"
+                                        },
+                                        "vesselId": {
+                                            "type": "integer"
+                                        },
+                                        "comment": {
+                                          "type": "string"
                                         },
                                         "locationId": {
                                             "type": "integer"
@@ -782,6 +816,23 @@
                                 "type": "boolean"
                             }
                         }
+                    }
+                }
+            }
+        },
+        "vessels": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "imo": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
                     }
                 }
             }
