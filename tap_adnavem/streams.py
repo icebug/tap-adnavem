@@ -71,6 +71,22 @@ class PurchaseOrderDocumentStream(AdnavemStream):
         params["number"] = context["number"]
         return params
 
+    def get_child_context(
+        self, record: dict, context: Optional[dict]
+    ) -> Dict[str, Any]:
+        """Return a context dictionary for child streams."""
+
+        return {
+            "shipmentNumbers": list(
+                set(
+                    shipment_cargo_detail["shipmentNumber"]
+                        for item in record["items"]
+                        if "shipmentCargoDetails" in item
+                        for shipment_cargo_detail in item["shipmentCargoDetails"]
+                )
+            )
+        }
+
     def post_process(
         self, row: dict, context: Optional[dict]
     ) -> Dict[str, Any]:
@@ -97,18 +113,6 @@ class ShipmentActiveContainerStream(AdnavemStream):
             params["partyId"] = self.config.get("party_id")
         return params
 
-    def get_child_context(
-        self, record: dict, context: Optional[dict]
-    ) -> Dict[str, Any]:
-
-        """Return a context dictionary for child streams."""
-        return {
-            "shipmentNumbers": [
-                container["shipmentNumber"]
-                    for container in record["containers"]
-            ]
-        }
-
     def post_process(
         self, row: dict, context: Optional[dict]
     ) -> Dict[str, Any]:
@@ -126,7 +130,7 @@ class ShipmentDetailStream(AdnavemStream):
     schema_filepath = SCHEMAS_DIR / "shipment_details.json"
 
     # Streams should be invoked once per parent:
-    parent_stream_type = ShipmentActiveContainerStream
+    parent_stream_type = PurchaseOrderDocumentStream
     # Assume epics don't have `updated_at` incremented when issues are changed:
     ignore_parent_replication_keys = True
 
