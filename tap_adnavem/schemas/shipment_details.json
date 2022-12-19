@@ -166,16 +166,16 @@
                     "type": "integer"
                 },
                 "teu": {
-                    "type": "integer"
+                    "type": "number"
                 },
                 "cube": {
-                    "type": "integer"
+                    "type": "number"
                 },
                 "coEmission": {
                     "type": "number"
                 },
                 "weight": {
-                    "type": "integer"
+                    "type": "number"
                 },
                 "distance": {
                     "type": "number"
@@ -307,7 +307,7 @@
                                             "type": "number"
                                         },
                                         "duration": {
-                                            "type": "integer"
+                                            "type": "number"
                                         },
                                         "coEmission": {
                                             "type": "number"
@@ -519,13 +519,13 @@
                                 "type": "integer"
                             },
                             "weight": {
-                                "type": "integer"
+                                "type": "number"
                             },
                             "maxWeight": {
-                                "type": "integer"
+                                "type": "number"
                             },
                             "warningWeight": {
-                                "type": "integer"
+                                "type": "number"
                             },
                             "maxCube": {
                                 "type": "number"
@@ -534,7 +534,7 @@
                                 "type": "number"
                             },
                             "containerSize": {
-                                "type": "integer"
+                                "type": "number"
                             },
                             "containerType": {
                                 "type": "integer"
@@ -714,7 +714,7 @@
                                 "type": "integer"
                             },
                             "weight": {
-                                "type": "integer"
+                                "type": "number"
                             },
                             "cargoGroupProperties": {
                                 "type": "integer"
